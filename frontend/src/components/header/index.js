@@ -5,7 +5,7 @@ import Utils from '../../utils/utils';
 import axios from '../../axios';
 export default class Header extends React.Component{
     state={}
-    componentWillMount(){
+    UNSAFE_componentWillMount(){
         this.setState({
             userName: "河畔一角"
         })
@@ -21,7 +21,7 @@ export default class Header extends React.Component{
         axios.jsonp({
             url: 'http://api.map.baidu.com/telematics/v3/weather?location='+encodeURIComponent(city)+'&output=json&ak=3p49MVra6urFRGOT9s8UBWr2'
         }).then((res)=>{
-            if (res.status == "success"){
+            if (res.status === "success"){
                 let data = res.results[0].weather_data[0];
                 this.setState({
                     dayPictureUrl: data.dayPictureUrl,
